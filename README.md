@@ -6,4 +6,4 @@ Currently in heavy WiP<br>
 **Homepage:** http://zannleft.github.io/<br>
 
 *Flutter*<br>
-**Flutter Demo Test:** https://zannleft.github.io/demoTutorial/<br>
+**Flutter Demo Test:** https://zannleft.github.io/demotutorial/<br>
