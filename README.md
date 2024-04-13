@@ -10,6 +10,6 @@ Currently in heavy WiP...<br>
 *3. DN :: OIS 2021/2022*<br>
 **Mars Citizen:** https://ois-2021-2022.github.io/DN3-zannleft/<br>
 
-### **Personal Projects**
+### **Personal projects:**
 *Flutter*<br>
 **Flutter Demo Test:** https://zannleft.github.io/demotutorial/<br>
