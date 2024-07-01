@@ -1,30 +1,25 @@
-# React + TypeScript + Vite
+# zannLeft.github.io
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Currently in heavy WiP...<br>
 
-Currently, two official plugins are available:
+## _About me_<br>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Me](https://yt3.googleusercontent.com/ytc/AOPolaTxXYVW5yoJKeGjNpBqhtTRu79IefF62lNXbcx2zg=s176-c-k-c0x00ffffff-no-rj)<br>
 
-## Expanding the ESLint configuration
+## **Homepage:** http://zannleft.github.io/<br>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## **Uni projects:**
 
-- Configure the top-level `parserOptions` property like this:
+_3. DN :: OIS 2021/2022_<br>
+**Mars Citizen:** https://ois-2021-2022.github.io/DN3-zannleft/<br>
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## **Personal projects:**
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+_Flutter_<br>
+**Flutter Demo Test:** https://zannleft.github.io/flutter_demo/<br>
+<br>
+_React_<br>
+**GitHub Pages:** https://zannleft.github.io//<br>
+<br>
+_Unity_<br>
+**Competitive Hacking Game:** https://github.com/zannLeft/Competitive-Hacking-Game<br>
