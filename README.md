@@ -1,6 +1,7 @@
 # zannLeft.github.io
 
-Currently in heavy WiP...<br>
+Hello there!<br>
+Computer science student @ UL FRI<br>
 
 ## _About me_<br>
 
