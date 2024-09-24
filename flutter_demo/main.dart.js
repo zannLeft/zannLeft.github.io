@@ -57773,7 +57773,7 @@ return B.c.al(r,s)},
 $S:373}
 A.AT.prototype={
 R(a){var s=null
-return new A.pi(new A.nW(new A.Un(),s,s,A.aqt(),A.apn(),t.xc),s,s,new A.r5(new A.ri(s),"My First App Beech",A.a7i(s,A.a9c(B.X,s,s,B.C5),!0),s),s,t.wt)}}
+return new A.pi(new A.nW(new A.Un(),s,s,A.aqt(),A.apn(),t.xc),s,s,new A.r5(new A.ri(s),"My First App",A.a7i(s,A.a9c(B.X,s,s,B.C5),!0),s),s,t.wt)}}
 A.Un.prototype={
 $1(a){return new A.hN(A.acd(),A.b([],t.pl),$.aB())},
 $S:374}
