@@ -30,7 +30,7 @@ A project from the 3rd assignment of the Object-Oriented Software (OIS) course (
 
 ### **Tippy**  
 A simple social media app made with **FlutterFlow** and **Supabase**. Originally a weekend challenge that turned into a full app.  
-[Check out Tippy](https://tippy-app-dijpyo.flutterflow.app/)
+[Check out Tippy](https://github.com/zannLeft/Tippy-App)
 
 ### **Flutter Demo Test**  
 A demo project made with **Flutter**.  
