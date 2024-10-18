@@ -21,7 +21,7 @@ I’m passionate about software development, game design, and data science, with
 ## 🎓 **University Projects**
 
 **Mars Citizen**  
-A project from the 3rd assignment of the Object-Oriented Software (OIS) course (2021/2022).  
+A project from the 3rd assignment of the Introduction to Information Systems (OIS) course (2021/2022).  
 [Explore Mars Citizen](https://ois-2021-2022.github.io/DN3-zannleft/)
 
 ---
