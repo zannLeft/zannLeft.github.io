@@ -96,7 +96,7 @@ const Hero = () => {
       </motion.figure>
 
       {/* Centered content wrapper */}
-      <div className="relative mx-auto max-w-7xl c-space min-h-screen flex items-center pt-24">
+      <div className="relative mx-auto max-w-7xl c-space min-h-screen flex items-center">
         <HeroText />
       </div>
     </section>
