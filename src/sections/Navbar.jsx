@@ -128,8 +128,8 @@ const Navbar = () => {
               href="#about"
               className="
                 ml-3 inline-flex items-center justify-center
-                px-7 py-3 rounded-full text-base font-semibold text-white
-                bg-gradient-to-r from-cyan-400 to-fuchsia-500
+                px-7 py-3 rounded-full text-base font-semibold text-black
+                bg-white
                 shadow-md transition-transform
                 hover:scale-[1.03] active:scale-[0.99]
               "
