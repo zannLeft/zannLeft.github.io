@@ -16,6 +16,7 @@ const Hero = () => {
       pointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
       pointer.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
+
     const handleTouchMove = (e) => {
       const t = e.touches[0];
       if (!t) return;
@@ -35,64 +36,68 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative flex items-start justify-center min-h-screen overflow-visible md:items-start md:justify-start c-space">
-      {/* Pull hero up slightly under the fixed navbar (adjust if needed) */}
-      <div className="relative w-full -translate-y-10">
-        {/* Text on top */}
-        <HeroText />
+    <section className="relative w-full min-h-screen overflow-hidden">
+      {/* Static hero background (stays still) */}
+      <img
+        src="/assets/hero-bg.png"
+        alt=""
+        draggable={false}
+        className="pointer-events-none absolute inset-0 -z-20 w-full h-full object-cover select-none"
+      />
 
-        {/* Canvas behind text */}
-        <motion.figure
-          className="absolute inset-0 -z-10 pointer-events-none"
-          style={{ width: "100vw", height: "100vh" }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: astronautLoaded ? 1 : 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
+      {/* Canvas behind text but above background */}
+      <motion.figure
+        className="absolute inset-0 -z-10 pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: astronautLoaded ? 1 : 0 }}
+        transition={{ duration: 1, delay: 0.6 }}
+      >
+        <Canvas
+          shadows
+          dpr={[1, 1.5]}
+          gl={{
+            antialias: false,
+            alpha: true,
+            powerPreference: "high-performance",
+          }}
+          camera={{ position: [0, -1, 5] }}
+          onCreated={(state) => {
+            state.gl.setClearColor("#ffffff", 0);
+          }}
         >
-          <Canvas
-            shadows
-            dpr={[1, 1.5]}
-            gl={{
-              antialias: false,
-              alpha: true,
-              powerPreference: "high-performance",
-            }}
-            camera={{ position: [0, -1, 5] }}
-            onCreated={(state) => {
-              // keep the canvas transparent so it doesn't cover the page
-              state.gl.setClearColor("#ffffff", 0);
-            }}
-          >
-            <Suspense fallback={null}>
-              <Astronaut
-                ref={astronautRef}
-                onLoaded={() => setAstronautLoaded(true)}
-              />
-              <Rig astronautRef={astronautRef} pointer={pointer} />
-            </Suspense>
-
-            <ambientLight intensity={1} />
-            <Environment preset="sunset" />
-
-            <directionalLight
-              position={[3, 5, 2]}
-              intensity={1.2}
-              castShadow
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
-              shadow-bias={-0.00015}
+          <Suspense fallback={null}>
+            <Astronaut
+              ref={astronautRef}
+              onLoaded={() => setAstronautLoaded(true)}
             />
+            <Rig astronautRef={astronautRef} pointer={pointer} />
+          </Suspense>
 
-            {/* ContactShadows back — SMALL so it doesn't look like a floor */}
-            <ContactShadows
-              position={[0, -1.5, 0]}
-              opacity={0.55}
-              scale={7}
-              blur={2}
-              resolution={512}
-            />
-          </Canvas>
-        </motion.figure>
+          <ambientLight intensity={1} />
+          <Environment preset="sunset" />
+
+          <directionalLight
+            position={[3, 5, 2]}
+            intensity={1.2}
+            castShadow
+            shadow-mapSize-width={1024}
+            shadow-mapSize-height={1024}
+            shadow-bias={-0.00015}
+          />
+
+          <ContactShadows
+            position={[0, -1.5, 0]}
+            opacity={0.55}
+            scale={7}
+            blur={2}
+            resolution={512}
+          />
+        </Canvas>
+      </motion.figure>
+
+      {/* Centered content wrapper */}
+      <div className="relative mx-auto max-w-7xl c-space min-h-screen flex items-center pt-24">
+        <HeroText />
       </div>
     </section>
   );
@@ -112,7 +117,7 @@ function Rig({ astronautRef, pointer }) {
       astronautRef.current.rotation,
       [0, baseY - targetOffsetY, 0],
       0.25,
-      delta
+      delta,
     );
   });
 }

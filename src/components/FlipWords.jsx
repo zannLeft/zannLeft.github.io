@@ -21,7 +21,6 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
     }
 
     setMaxWidth(Math.ceil(max));
-    reveal;
   }, [words]);
 
   useEffect(() => {
@@ -58,7 +57,7 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
     <span
       className={twMerge(
         "relative inline-block align-baseline overflow-visible",
-        className
+        className,
       )}
       style={{
         width: maxWidth ? `${maxWidth}px` : undefined,
@@ -73,7 +72,7 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
         ref={measureRef}
         className={twMerge(
           "absolute pointer-events-none opacity-0 whitespace-nowrap",
-          className
+          className,
         )}
         style={{ left: 0, top: 0, lineHeight: 1 }}
       />

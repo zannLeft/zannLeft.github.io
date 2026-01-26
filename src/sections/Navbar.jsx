@@ -1,4 +1,11 @@
-import { motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { useEffect, useState } from "react";
 import { FiFacebook, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
 
 const Navbar = () => {
@@ -7,128 +14,221 @@ const Navbar = () => {
     { label: "About", href: "#about" },
   ];
 
+  const socials = [
+    { label: "LinkedIn", href: "#", icon: <FiLinkedin className="w-6 h-6" /> },
+    { label: "Facebook", href: "#", icon: <FiFacebook className="w-6 h-6" /> },
+    {
+      label: "Instagram",
+      href: "#",
+      icon: <FiInstagram className="w-6 h-6" />,
+    },
+    { label: "GitHub", href: "#", icon: <FiGithub className="w-6 h-6" /> },
+  ];
+
+  const { scrollY, scrollYProgress } = useScroll();
+  const [open, setOpen] = useState(false);
+
+  // Smooth 0->1 over first 120px scroll
+  const raw = useTransform(scrollY, [0, 120], [0, 1], { clamp: true });
+  const t = useSpring(raw, { stiffness: 160, damping: 26, mass: 0.7 });
+
+  // ✅ Blur only appears when scrolling
+  const blur = useTransform(t, (v) => `blur(${14 * v}px)`);
+
+  // Dark glass ramps in (fits your dark hero)
+  const bg = useTransform(t, (v) => `rgba(15, 17, 21, ${0.72 * v})`);
+  const border = useTransform(t, (v) => `rgba(255,255,255,${0.1 * v})`);
+  const shadow = useTransform(t, (v) => `0 10px 30px rgba(0,0,0,${0.35 * v})`);
+
+  // Tall at top, compact on scroll
+  const navHeight = useTransform(t, [0, 1], [96, 80]);
+
+  // Progress line hidden at top
+  const lineOpacity = useTransform(t, [0, 0.25, 1], [0, 1, 1]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  const NavLink = ({ href, children, onClick }) => (
+    <a
+      href={href}
+      onClick={onClick}
+      className="
+        relative py-2 font-semibold tracking-wide
+        text-white/90 hover:text-white transition-colors
+        after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full
+        after:origin-left after:scale-x-0 after:rounded-full
+        after:bg-gradient-to-r after:from-cyan-400 after:to-fuchsia-500
+        after:transition-transform after:duration-300
+        hover:after:scale-x-100
+      "
+    >
+      {children}
+    </a>
+  );
+
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      {/* Backdrop + border for visibility */}
-      <div className="bg-white/90 backdrop-blur-md border-b border-neutral-200">
-        <div className="mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-24 md:h-28">
-          {/* Left: Logo + Nav */}
+      <motion.div
+        className="border-b border-transparent"
+        style={{
+          backgroundColor: bg,
+          borderColor: border,
+          backdropFilter: blur,
+          boxShadow: shadow,
+        }}
+      >
+        <motion.div
+          className="mx-auto max-w-7xl px-5 sm:px-8 flex items-center justify-between"
+          style={{ height: navHeight }}
+        >
+          {/* Left */}
           <div className="flex items-center gap-10">
-            <motion.a
-              href="/"
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 250,
-                damping: 25,
-                delay: 0.2,
-              }}
-              className="flex items-center group"
-            >
+            <a href="/" className="flex items-center group" aria-label="Home">
               <img
                 src="assets/logo.svg"
                 alt="Logo"
-                className="h-14 md:h-16 w-auto transition-opacity opacity-90 group-hover:opacity-100"
+                className="h-12 md:h-14 w-auto opacity-90 group-hover:opacity-100 transition-opacity invert"
               />
-            </motion.a>
+            </a>
 
-            {/* Desktop nav */}
             <nav className="hidden lg:flex items-center gap-10">
-              {links.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 120,
-                    damping: 16,
-                    delay: 0.35 + index * 0.08,
-                  }}
-                  className="relative text-neutral-900 text-lg font-semibold tracking-wide hover:text-black transition-colors"
-                >
+              {links.map((item) => (
+                <NavLink key={item.label} href={item.href}>
                   {item.label}
-                  <span className="absolute -bottom-2 left-0 w-0 h-[3px] bg-neutral-900 rounded-full transition-all duration-300 group-hover:w-full" />
-                </motion.a>
+                </NavLink>
               ))}
             </nav>
           </div>
 
-          {/* Right: Socials + CTA */}
-          <div className="hidden md:flex items-center gap-6">
-            <motion.a
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.55, duration: 0.4 }}
-              className="text-neutral-700 hover:text-neutral-900 transition-colors"
-              href="#"
-              aria-label="LinkedIn"
-            >
-              <FiLinkedin className="w-7 h-7" />
-            </motion.a>
+          {/* Right */}
+          <div className="hidden md:flex items-center gap-5">
+            {socials.map((s) => (
+              <a
+                key={s.label}
+                className="text-white/65 hover:text-white transition-colors"
+                href={s.href}
+                aria-label={s.label}
+              >
+                {s.icon}
+              </a>
+            ))}
 
-            <motion.a
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.4 }}
-              className="text-neutral-700 hover:text-neutral-900 transition-colors"
-              href="#"
-              aria-label="Facebook"
-            >
-              <FiFacebook className="w-7 h-7" />
-            </motion.a>
-
-            <motion.a
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.65, duration: 0.4 }}
-              className="text-neutral-700 hover:text-neutral-900 transition-colors"
-              href="#"
-              aria-label="Instagram"
-            >
-              <FiInstagram className="w-7 h-7" />
-            </motion.a>
-
-            <motion.a
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.7, duration: 0.4 }}
-              className="text-neutral-700 hover:text-neutral-900 transition-colors"
-              href="#"
-              aria-label="GitHub"
-            >
-              <FiGithub className="w-7 h-7" />
-            </motion.a>
-
-            <motion.a
+            <a
               href="#about"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{
-                delay: 0.75,
-                duration: 0.4,
-                type: "spring",
-                stiffness: 180,
-                damping: 18,
-              }}
-              className="ml-4 inline-flex items-center justify-center px-7 py-3 rounded-full text-base md:text-lg font-semibold text-white bg-neutral-900 hover:bg-black transition-colors shadow-md"
+              className="
+                ml-3 inline-flex items-center justify-center
+                px-7 py-3 rounded-full text-base font-semibold text-white
+                bg-gradient-to-r from-cyan-400 to-fuchsia-500
+                shadow-md transition-transform
+                hover:scale-[1.03] active:scale-[0.99]
+              "
             >
               Contact
-            </motion.a>
+            </a>
           </div>
 
-          {/* Mobile: simple "Menu" placeholder (optional) */}
+          {/* Mobile */}
           <div className="md:hidden">
-            <button className="px-4 py-2 rounded-xl border border-neutral-300 text-neutral-900 font-semibold">
+            <button
+              onClick={() => setOpen(true)}
+              className="px-4 py-2 rounded-xl border border-white/25 text-white font-semibold hover:border-white/40 transition-colors"
+              aria-label="Open menu"
+            >
               Menu
             </button>
           </div>
-        </div>
-      </div>
+        </motion.div>
+
+        <motion.div
+          className="h-[2px] origin-left bg-gradient-to-r from-cyan-400 to-fuchsia-500"
+          style={{ scaleX: scrollYProgress, opacity: lineOpacity }}
+        />
+      </motion.div>
+
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {open && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+            />
+            <motion.aside
+              className="fixed top-0 right-0 h-full w-[86vw] max-w-sm bg-[#0f1115] shadow-2xl border-l border-white/10 p-6"
+              initial={{ x: 400 }}
+              animate={{ x: 0 }}
+              exit={{ x: 400 }}
+              transition={{ type: "spring", stiffness: 220, damping: 26 }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-extrabold tracking-wide text-white">
+                  Menu
+                </span>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="px-3 py-2 rounded-xl border border-white/20 font-semibold text-white hover:border-white/35 transition-colors"
+                  aria-label="Close menu"
+                >
+                  Close
+                </button>
+              </div>
+
+              <div className="mt-8 flex flex-col gap-5">
+                {links.map((l) => (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="text-xl font-semibold text-white/90 hover:text-white transition-colors"
+                  >
+                    {l.label}
+                  </a>
+                ))}
+
+                <a
+                  href="#about"
+                  onClick={() => setOpen(false)}
+                  className="
+                    mt-2 inline-flex items-center justify-center
+                    px-6 py-3 rounded-full font-semibold text-white
+                    bg-gradient-to-r from-cyan-400 to-fuchsia-500
+                    shadow-md
+                  "
+                >
+                  Contact
+                </a>
+
+                <div className="mt-6 flex items-center gap-4">
+                  {socials.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      aria-label={s.label}
+                      className="text-white/65 hover:text-white transition-colors"
+                    >
+                      {s.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

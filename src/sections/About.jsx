@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen w-full flex items-start justify-center c-space py-24"
+      className="scroll-mt-32 min-h-screen w-full flex items-start justify-center c-space py-24"
     >
       <div className="w-full max-w-4xl">
         <h2 className="text-5xl md:text-6xl font-extrabold text-neutral-900">
@@ -39,7 +39,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Extra space if you want more scroll distance */}
         <div className="h-32" />
       </div>
     </section>

@@ -12,7 +12,7 @@ export const Astronaut = React.forwardRef(
         if (typeof forwardedRef === "function") forwardedRef(node);
         else forwardedRef.current = node;
       },
-      [forwardedRef]
+      [forwardedRef],
     );
 
     const { nodes, materials, animations } = useGLTF("models/model.glb");
@@ -26,7 +26,6 @@ export const Astronaut = React.forwardRef(
       action?.reset?.();
       action?.play?.();
 
-      // fire onLoaded on next frame so everything is mounted
       let raf = requestAnimationFrame(() => {
         onLoaded?.();
       });
@@ -39,9 +38,8 @@ export const Astronaut = React.forwardRef(
         ref={setRefs}
         {...props}
         dispose={null}
-        // Desktop-only placement (no mobile branches)
         rotation={[0, -0.5, 0]}
-        position={[1.15, -1.5, 2]}
+        position={[1.75, -1.5, 1.75]}
       >
         <group name="Scene">
           <group name="Armature" scale={0.01}>
@@ -66,7 +64,7 @@ export const Astronaut = React.forwardRef(
         </group>
       </group>
     );
-  }
+  },
 );
 
 useGLTF.preload("models/model.glb");
