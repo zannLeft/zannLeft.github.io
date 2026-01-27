@@ -1,8 +1,14 @@
 import { FlipWords } from "./FlipWords";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 const HeroText = () => {
   const words = ["Web Apps", "Games", "AI Systems", "Animations"];
+
+  const { scrollY } = useScroll();
+
+  // Foreground moves a bit MORE than the page (feels closer)
+  const y = useTransform(scrollY, [0, 500], [0, -55]);
+
   const variants = {
     hidden: { opacity: 0, x: -30 },
     visible: { opacity: 1, x: 0 },
@@ -10,7 +16,10 @@ const HeroText = () => {
 
   return (
     <div className="relative z-10 w-full flex justify-start text-left">
-      <div className="w-full max-w-3xl px-4 md:px-0">
+      <motion.div
+        style={{ y }}
+        className="w-full max-w-3xl px-4 md:px-0 hero-text-glow will-change-transform"
+      >
         <motion.h1
           className="text-5xl md:text-7xl font-medium text-white tracking-tight"
           variants={variants}
@@ -66,7 +75,7 @@ const HeroText = () => {
             Download CV
           </a>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -49,3 +49,9 @@ body {
 .c-space {
   @apply sm:px-10 px-5 lg:px-15;
 }
+
+.hero-text-glow {
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 46px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 0 120px rgba(0, 0, 0, 0.55));
+}
