@@ -73,8 +73,8 @@ const Hero = () => {
             <Rig astronautRef={astronautRef} pointer={pointer} />
           </Suspense>
 
-          <ambientLight intensity={1} />
-          <Environment preset="sunset" />
+          <ambientLight intensity={0.1} />
+          <Environment preset="warehouse" />
 
           <directionalLight
             position={[3, 5, 2]}
@@ -87,9 +87,9 @@ const Hero = () => {
 
           <ContactShadows
             position={[0, -1.5, 0]}
-            opacity={0.55}
-            scale={7}
-            blur={2}
+            opacity={0.6}
+            scale={10}
+            blur={1}
             resolution={512}
           />
         </Canvas>
