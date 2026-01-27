@@ -1,45 +1,221 @@
-import React from "react";
+import { motion } from "framer-motion";
 
 const About = () => {
+  const highlights = [
+    {
+      title: "What I build",
+      items: [
+        "Modern web apps with clean UX",
+        "Interactive 3D / motion experiences",
+        "AI-powered features & systems",
+        "Small games & playful prototypes",
+      ],
+    },
+    {
+      title: "How I work",
+      items: [
+        "Fast iteration + strong fundamentals",
+        "Performance-first mindset",
+        "Clean, scalable components",
+        "Good communication & ownership",
+      ],
+    },
+    {
+      title: "Currently exploring",
+      items: [
+        "R3F + shaders & realtime lighting",
+        "Agent workflows & RAG patterns",
+        "Design systems & micro-interactions",
+      ],
+    },
+  ];
+
+  const stack = [
+    "React",
+    "TypeScript",
+    "Tailwind",
+    "Framer Motion",
+    "Three.js / R3F",
+    "Node.js",
+    "Python",
+    "OpenAI tooling",
+    "Postgres",
+    "Docker",
+    "Git",
+  ];
+
+  const stats = [
+    { label: "Focus", value: "Web + 3D + AI" },
+    { label: "Style", value: "Clean & playful" },
+    { label: "Goal", value: "Impactful products" },
+  ];
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 18 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <section
       id="about"
-      className="scroll-mt-32 min-h-screen w-full flex items-start justify-center c-space py-24"
+      className="relative isolate w-full py-28 c-space overflow-hidden"
     >
-      <div className="w-full max-w-4xl">
-        <h2 className="text-5xl md:text-6xl font-extrabold text-neutral-900">
-          About
-        </h2>
+      {/* Background PNG that the glass can blur */}
+      <motion.img
+        src="/assets/hero-overlay.png"
+        alt=""
+        draggable={false}
+        className="pointer-events-none absolute inset-0 -z-10 w-full h-full object-cover select-none"
+        style={{
+          opacity: 0.55, // tweak: 0.35 - 0.7
+          mixBlendMode: "normal", // try "normal" if you want it calmer
+          transform: "translate3d(0,0,0)",
+        }}
+        animate={{
+          x: [0, 12, 0, -10, 0],
+          y: [0, -10, 0, 12, 0],
+          rotate: [0, 0.6, 0, -0.6, 0],
+          scale: [1.02, 1.03, 1.02],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
-        <p className="mt-6 text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl">
-          This is a minimal placeholder section so you can test scrolling and
-          layout. Replace this with your real content later.
-        </p>
+      <div className="mx-auto max-w-7xl">
+        {/* Heading */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl"
+        >
+          <p className="text-sm font-semibold tracking-widest text-white/60">
+            ABOUT
+          </p>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="rounded-2xl border border-neutral-200 p-6 bg-white">
-            <h3 className="text-xl font-bold text-neutral-900">Section</h3>
-            <p className="mt-2 text-neutral-700">
-              Simple card layout for spacing.
-            </p>
+          <h2 className="mt-3 text-4xl md:text-6xl font-extrabold tracking-tight text-white">
+            A bit about{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">
+              me
+            </span>
+            .
+          </h2>
+
+          <p className="mt-6 text-lg md:text-xl leading-relaxed text-white/70">
+            I’m Žan — a developer who enjoys building modern web experiences,
+            playful interactive visuals, and AI-powered systems. I like projects
+            where design, motion, and performance all matter.
+          </p>
+
+          <p className="mt-4 text-lg md:text-xl leading-relaxed text-white/70">
+            My sweet spot is taking an idea from “rough concept” to something
+            polished: clean UI, smooth animations, and solid engineering under
+            the hood.
+          </p>
+
+          {/* Quick stats */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4"
+              >
+                <p className="text-sm font-semibold text-white/50">{s.label}</p>
+                <p className="mt-1 text-base font-bold text-white">{s.value}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="rounded-2xl border border-neutral-200 p-6 bg-white">
-            <h3 className="text-xl font-bold text-neutral-900">Scroll</h3>
-            <p className="mt-2 text-neutral-700">
-              Enough height to test smooth scrolling.
-            </p>
+          {/* CTA */}
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform"
+            >
+              Let’s talk
+            </a>
+
+            <a
+              href="/assets/cv.pdf"
+              className="inline-flex items-center justify-center px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md"
+            >
+              Download CV
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Cards */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {highlights.map((card) => (
+            <div
+              key={card.title}
+              className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md p-7 shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+            >
+              <h3 className="text-xl font-extrabold text-white">
+                {card.title}
+              </h3>
+
+              <ul className="mt-5 space-y-3 text-white/70">
+                {card.items.map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <span className="mt-2 h-2 w-2 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-500" />
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Tech stack */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mt-14"
+        >
+          <div className="flex items-end justify-between gap-6 flex-wrap">
+            <div>
+              <p className="text-sm font-semibold tracking-widest text-white/60">
+                STACK
+              </p>
+              <h3 className="mt-2 text-2xl md:text-3xl font-extrabold text-white">
+                Tools I like using
+              </h3>
+            </div>
+
+            <div className="text-white/60 text-sm">
+              (Swap these with your actual stack)
+            </div>
           </div>
 
-          <div className="rounded-2xl border border-neutral-200 p-6 bg-white">
-            <h3 className="text-xl font-bold text-neutral-900">Replace</h3>
-            <p className="mt-2 text-neutral-700">
-              Swap this out when you redesign.
-            </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {stack.map((t) => (
+              <span
+                key={t}
+                className="px-4 py-2 rounded-full text-sm font-semibold
+                           border border-white/10 bg-white/5 text-white/80
+                           hover:bg-white/10 transition-colors"
+              >
+                {t}
+              </span>
+            ))}
           </div>
-        </div>
-
-        <div className="h-32" />
+        </motion.div>
       </div>
     </section>
   );
