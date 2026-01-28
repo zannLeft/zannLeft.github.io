@@ -1,12 +1,10 @@
 import { FlipWords } from "./FlipWords";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const HeroText = () => {
   const words = ["Web Apps", "Games", "AI Systems", "Animations"];
-
   const { scrollY } = useScroll();
 
-  // Foreground moves a bit MORE than the page (feels closer)
   const y = useTransform(scrollY, [0, 500], [0, -55]);
 
   const variants = {
@@ -15,47 +13,47 @@ const HeroText = () => {
   };
 
   return (
-    <div className="relative z-10 w-full flex justify-start text-left">
-      <motion.div
-        style={{ y }}
-        className="w-full max-w-3xl px-4 md:px-0 hero-text-glow will-change-transform"
-      >
-        <motion.h1
-          className="text-5xl md:text-7xl font-medium text-white tracking-tight"
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.9 }}
-        >
-          Hi I'm Žan
-        </motion.h1>
-
-        <div className="mt-4">
-          <motion.p
-            className="text-4xl md:text-6xl font-medium text-neutral-400 leading-tight"
+    <div className="relative z-10 w-full flex justify-start text-left select-none">
+      <motion.div style={{ y }} className="w-full max-w-3xl px-4 md:px-0">
+        {/* Make the text itself non-selectable without breaking buttons */}
+        <div className="pointer-events-none">
+          <motion.h1
+            className="text-5xl md:text-7xl font-medium text-white tracking-tight hero-text-glow"
             variants={variants}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 1.05 }}
+            transition={{ delay: 0.9 }}
           >
-            A Developer <br /> Crafting Diverse
-          </motion.p>
+            Hi I'm Žan
+          </motion.h1>
 
-          <motion.div
-            variants={variants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 1.2 }}
-            className="mt-2"
-          >
-            <FlipWords
-              words={words}
-              className="font-black text-5xl sm:text-7xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
-            />
-          </motion.div>
+          <div className="mt-4">
+            <motion.p
+              className="text-4xl md:text-6xl font-medium text-neutral-400 leading-tight hero-text-glow"
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.05 }}
+            >
+              A Developer <br /> Crafting Diverse
+            </motion.p>
+
+            <motion.div
+              variants={variants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1.2 }}
+              className="mt-2"
+            >
+              <FlipWords
+                words={words}
+                className="font-black text-5xl sm:text-7xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500"
+              />
+            </motion.div>
+          </div>
         </div>
 
-        {/* Action Buttons */}
+        {/* Buttons stay clickable */}
         <motion.div
           className="mt-10 flex flex-wrap gap-5"
           initial={{ opacity: 0, y: 20 }}

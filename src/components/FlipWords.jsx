@@ -37,9 +37,15 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
     exit: { transition: { staggerChildren: 0.02, staggerDirection: 1 } },
   };
 
+  // Shadow that looks good for the “active” word
+  const glow =
+    "drop-shadow(0 14px 18px rgba(0,0,0,0.45)) drop-shadow(0 0 46px rgba(0,0,0,0.70))";
+
   const letterVariants = {
-    initial: { opacity: 0, y: 10, filter: "blur(8px)" },
-    animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+    initial: { opacity: 0, y: 10, filter: `blur(8px) ${glow}` },
+    animate: { opacity: 1, y: 0, filter: `blur(0px) ${glow}` },
+
+    // ✅ EXIT: remove glow so the shadow doesn't look weird while flying out
     exit: {
       opacity: 0,
       y: -100,
@@ -50,7 +56,6 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
     },
   };
 
-  // descender clipping fix at letter level
   const letterPadEm = 0.18;
 
   return (
@@ -61,13 +66,9 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
       )}
       style={{
         width: maxWidth ? `${maxWidth}px` : undefined,
-
-        // ✅ THIS is what fixes the overlapped text below:
-        // reserve one line of height for the word, but keep it tight.
         height: "1.1em",
       }}
     >
-      {/* Hidden measurer */}
       <span
         ref={measureRef}
         className={twMerge(
