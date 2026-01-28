@@ -76,15 +76,6 @@ const Hero = () => {
           <ambientLight intensity={0.1} />
           <Environment preset="warehouse" />
 
-          <directionalLight
-            position={[3, 5, 2]}
-            intensity={1.2}
-            castShadow
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
-            shadow-bias={-0.00015}
-          />
-
           <ContactShadows
             position={[0, -1.5, 0]}
             opacity={0.6}

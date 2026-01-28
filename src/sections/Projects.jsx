@@ -21,7 +21,7 @@ const Projects = () => {
   const projects = useMemo(
     () => [
       {
-        title: "Project One",
+        title: "zannLeft.io",
         subtitle: "Short description",
         tags: ["React", "Node"],
         image: "/assets/projects/p1.jpg",
@@ -29,7 +29,7 @@ const Projects = () => {
         repo: "#",
       },
       {
-        title: "Project Two",
+        title: "Letter Sauce WebGPU",
         subtitle: "Short description",
         tags: ["Three.js", "R3F"],
         image: "/assets/projects/p2.jpg",
@@ -37,7 +37,7 @@ const Projects = () => {
         repo: "#",
       },
       {
-        title: "Project Three",
+        title: "Multiplayer Unity Hacking Game",
         subtitle: "Short description",
         tags: ["AI", "Python"],
         image: "/assets/projects/p3.jpg",
@@ -45,10 +45,50 @@ const Projects = () => {
         repo: "#",
       },
       {
-        title: "Project Four",
+        title: "Koncerti.live",
         subtitle: "Short description",
         tags: ["Animations", "Framer Motion"],
         image: "/assets/projects/p4.jpg",
+        live: "#",
+        repo: "#",
+      },
+      {
+        title: "Tippy",
+        subtitle: "Short description",
+        tags: ["Animations", "Framer Motion"],
+        image: "/assets/projects/p5.jpg",
+        live: "#",
+        repo: "#",
+      },
+      {
+        title: "Project Six",
+        subtitle: "Short description",
+        tags: ["Animations", "Framer Motion"],
+        image: "/assets/projects/p6.jpg",
+        live: "#",
+        repo: "#",
+      },
+      {
+        title: "Project Seven",
+        subtitle: "Short description",
+        tags: ["Animations", "Framer Motion"],
+        image: "/assets/projects/p7.jpg",
+        live: "#",
+        repo: "#",
+      },
+      {
+        title: "Project Eight",
+        subtitle: "Short description",
+        tags: ["Animations", "Framer Motion"],
+        image: "/assets/projects/p8.jpg",
+        live: "#",
+        repo: "#",
+      },
+      {
+        title: "Project Nine",
+        subtitle: "Short description",
+        tags: ["Animations", "Framer Motion"],
+        image: "/assets/projects/p9.jpg",
         live: "#",
         repo: "#",
       },
@@ -68,7 +108,6 @@ const Projects = () => {
     <section id="projects" className="relative w-full py-28 overflow-hidden">
       {/* Subtle section background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/10 to-black/25" />
         <div className="absolute inset-0 opacity-40">
           <img
             src="/assets/projects-overlay.png"
@@ -101,7 +140,7 @@ const Projects = () => {
       <div className="mt-12">
         <button
           onClick={() => setSelected(featured)}
-          className="group relative block w-full text-left"
+          className="group relative block w-full text-left cursor-pointer"
           aria-label={`Open ${featured.title}`}
         >
           <div className="relative w-full h-[68vh] min-h-[520px] max-h-[820px] overflow-hidden">
@@ -147,7 +186,7 @@ const Projects = () => {
                   <a
                     href={featured.live}
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform cursor-pointer"
                   >
                     Live
                   </a>
@@ -155,7 +194,7 @@ const Projects = () => {
                   <a
                     href={featured.repo}
                     onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md cursor-pointer"
                   >
                     Code
                   </a>
@@ -171,9 +210,9 @@ const Projects = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((p) => (
             <button
-              key={p.title}
+              key={`${p.title}-${p.image}`}
               onClick={() => setSelected(p)}
-              className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden text-left shadow-[0_20px_60px_rgba(0,0,0,0.35)] hover:border-white/20 transition-colors"
+              className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden text-left shadow-[0_20px_60px_rgba(0,0,0,0.35)] hover:border-white/20 transition-colors cursor-pointer"
               aria-label={`Open ${p.title}`}
             >
               <div className="relative h-52 overflow-hidden">
@@ -210,25 +249,41 @@ const Projects = () => {
       <AnimatePresence>
         {selected && (
           <>
+            {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm"
+              className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm cursor-pointer"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelected(null)}
+              aria-label="Close modal"
             />
 
+            {/* Click-outside handler lives here */}
             <motion.div
-              className="fixed inset-0 z-[1000] flex items-center justify-center p-5 md:p-8"
+              className="fixed inset-0 z-[1000] flex items-center justify-center p-5 md:p-8 cursor-pointer"
               initial={{ opacity: 0, y: 18, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 18, scale: 0.98 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
+              onClick={() => setSelected(null)}
+              aria-label="Close modal"
             >
-              <div className="relative w-full max-w-5xl max-h-[85vh] overflow-auto rounded-3xl border border-white/10 bg-[#0f1115]/90 backdrop-blur-xl shadow-[0_30px_100px_rgba(0,0,0,0.55)]">
+              {/* Card stops the outside click */}
+              <div
+                className="relative w-full max-w-5xl max-h-[85vh] overflow-auto rounded-3xl border border-white/10 bg-[#0f1115]/90 backdrop-blur-xl shadow-[0_30px_100px_rgba(0,0,0,0.55)] cursor-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <button
                   onClick={() => setSelected(null)}
-                  className="absolute right-4 top-4 z-10 rounded-full border border-white/15 bg-white/5 p-2 text-white/80 hover:text-white hover:border-white/25 transition-colors"
+                  className="
+                    absolute right-4 top-4 z-10 rounded-full p-2
+                    border border-white/15 bg-white/5
+                    text-white/80
+                    hover:text-white hover:border-white/30 hover:bg-white/10
+                    transition-colors
+                    cursor-pointer
+                  "
                   aria-label="Close"
                 >
                   <FiX className="w-5 h-5" />
@@ -267,7 +322,7 @@ const Projects = () => {
                     {selected.live && (
                       <a
                         href={selected.live}
-                        className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform"
+                        className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform cursor-pointer"
                       >
                         Live <FiExternalLink />
                       </a>
@@ -276,7 +331,7 @@ const Projects = () => {
                     {selected.repo && (
                       <a
                         href={selected.repo}
-                        className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md"
+                        className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md cursor-pointer"
                       >
                         Code <FiGithub />
                       </a>

@@ -68,7 +68,6 @@ const About = () => {
         className="pointer-events-none absolute inset-0 -z-10 w-full h-full object-cover select-none"
         style={{
           opacity: 0.55, // tweak: 0.35 - 0.7
-          mixBlendMode: "normal", // try "normal" if you want it calmer
           transform: "translate3d(0,0,0)",
         }}
         animate={{
@@ -177,44 +176,6 @@ const About = () => {
               </ul>
             </div>
           ))}
-        </motion.div>
-
-        {/* Tech stack */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-14"
-        >
-          <div className="flex items-end justify-between gap-6 flex-wrap">
-            <div>
-              <p className="text-sm font-semibold tracking-widest text-white/60">
-                STACK
-              </p>
-              <h3 className="mt-2 text-2xl md:text-3xl font-extrabold text-white">
-                Tools I like using
-              </h3>
-            </div>
-
-            <div className="text-white/60 text-sm">
-              (Swap these with your actual stack)
-            </div>
-          </div>
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            {stack.map((t) => (
-              <span
-                key={t}
-                className="px-4 py-2 rounded-full text-sm font-semibold
-                           border border-white/10 bg-white/5 text-white/80
-                           hover:bg-white/10 transition-colors"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>

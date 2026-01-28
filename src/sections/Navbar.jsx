@@ -13,6 +13,7 @@ const Navbar = () => {
     { label: "Home", href: "#" },
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
+    { label: "Timeline", href: "#timeline" },
   ];
 
   const socials = [
@@ -126,7 +127,7 @@ const Navbar = () => {
             ))}
 
             <a
-              href="#about"
+              href="#contact"
               className="
                 ml-3 inline-flex items-center justify-center
                 px-7 py-3 rounded-full text-base font-semibold text-black
@@ -201,7 +202,7 @@ const Navbar = () => {
                 ))}
 
                 <a
-                  href="#about"
+                  href="#contact"
                   onClick={() => setOpen(false)}
                   className="
                     mt-2 inline-flex items-center justify-center
