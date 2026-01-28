@@ -1,3 +1,4 @@
+// HeroText.jsx
 import { FlipWords } from "./FlipWords";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -5,6 +6,7 @@ const HeroText = () => {
   const words = ["Web Apps", "Games", "AI Systems", "Animations"];
   const { scrollY } = useScroll();
 
+  // Foreground moves a bit MORE than the page (feels closer)
   const y = useTransform(scrollY, [0, 500], [0, -55]);
 
   const variants = {
@@ -14,11 +16,27 @@ const HeroText = () => {
 
   return (
     <div className="relative z-10 w-full flex justify-start text-left select-none">
-      <motion.div style={{ y }} className="w-full max-w-3xl px-4 md:px-0">
-        {/* Make the text itself non-selectable without breaking buttons */}
+      <motion.div
+        style={{ y }}
+        className="relative w-full max-w-3xl px-4 md:px-0 will-change-transform"
+      >
+        {/* Dark smooth blob backdrop */}
+        <div
+          className="pointer-events-none absolute -z-10 rounded-[48px]"
+          style={{
+            left: "-30%",
+            right: "10%",
+            top: "-20%",
+            bottom: "-40%",
+            background:
+              "radial-gradient(ellipse at center, rgba(0,0,0,0.78), rgba(0,0,0,0) 72%)",
+          }}
+        />
+
+        {/* Text block (not clickable anyway) */}
         <div className="pointer-events-none">
           <motion.h1
-            className="text-5xl md:text-7xl font-medium text-white tracking-tight hero-text-glow"
+            className="text-5xl md:text-7xl font-medium text-white tracking-tight"
             variants={variants}
             initial="hidden"
             animate="visible"
@@ -29,7 +47,7 @@ const HeroText = () => {
 
           <div className="mt-4">
             <motion.p
-              className="text-4xl md:text-6xl font-medium text-neutral-400 leading-tight hero-text-glow"
+              className="text-4xl md:text-6xl font-medium text-neutral-400 leading-tight"
               variants={variants}
               initial="hidden"
               animate="visible"
@@ -53,7 +71,7 @@ const HeroText = () => {
           </div>
         </div>
 
-        {/* Buttons stay clickable */}
+        {/* Action Buttons (still clickable) */}
         <motion.div
           className="mt-10 flex flex-wrap gap-5"
           initial={{ opacity: 0, y: 20 }}
