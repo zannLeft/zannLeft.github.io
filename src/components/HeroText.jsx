@@ -57,7 +57,7 @@ const HeroText = () => {
         </div>
 
         <div className="flex min-h-[100svh] flex-col items-center text-center md:min-h-0 md:items-start md:text-left">
-          <div className="pointer-events-none w-full pt-[20svh] sm:pt-[18svh] md:pt-0">
+          <div className="pointer-events-none w-full pt-[14svh] sm:pt-[12svh] md:pt-0">
             <motion.h1
               className="text-4xl font-medium tracking-tight text-white sm:text-5xl md:text-7xl"
               variants={variants}
@@ -96,9 +96,9 @@ const HeroText = () => {
             </div>
           </div>
 
-          <div className="mt-auto w-full pb-8 sm:pb-10 md:mt-0 md:pb-0">
+          <div className="mt-auto w-full pb-14 sm:pb-16 md:mt-0 md:pb-0">
             <motion.p
-              className="mx-auto mt-6 max-w-[34rem] text-base leading-relaxed text-white/70 sm:text-lg md:mx-0 md:mt-5 md:max-w-2xl md:text-xl"
+              className="mx-auto mt-6 max-w-[34rem] text-base leading-relaxed text-white [text-shadow:0_10px_30px_rgba(0,0,0,1),0_0_18px_rgba(0,0,0,0.95)] sm:text-lg md:mx-0 md:mt-5 md:max-w-2xl md:text-xl md:text-white/70 md:[text-shadow:none]"
               variants={variants}
               initial="hidden"
               animate="visible"

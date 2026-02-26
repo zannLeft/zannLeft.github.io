@@ -56,7 +56,7 @@ const Hero = () => {
           shadows
           dpr={[1, 1.5]}
           gl={{
-            antialias: false,
+            antialias: true,
             alpha: true,
             powerPreference: "high-performance",
           }}
