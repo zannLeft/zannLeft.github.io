@@ -311,7 +311,7 @@ const Projects = () => {
 
             {/* Modal shell */}
             <motion.div
-              className="fixed inset-0 z-[1000] flex items-start justify-center p-4 md:p-8 overflow-y-auto"
+              className="fixed inset-0 z-[1000] flex items-start justify-center overflow-y-auto px-4 pb-4 pt-[calc(env(safe-area-inset-top)+5.5rem)] md:p-8"
               initial={{ opacity: 0, y: 18, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 18, scale: 0.98 }}
@@ -320,20 +320,21 @@ const Projects = () => {
               aria-label="Close modal"
             >
               {/* Top spacing */}
-              <div className="w-full max-w-5xl pt-8 md:pt-14">
+              <div className="w-full max-w-5xl md:pt-20">
                 <div
-                  className="relative w-full max-h-[calc(100vh-4rem)] md:max-h-[calc(100vh-7rem)] overflow-y-auto rounded-3xl border border-white/10 bg-[#0f1115]/90 backdrop-blur-xl shadow-[0_30px_100px_rgba(0,0,0,0.55)]"
+                  className="relative w-full max-h-[calc(100dvh-env(safe-area-inset-top)-6rem)] md:max-h-[calc(100dvh-7rem)] overflow-y-auto rounded-3xl border border-white/10 bg-[#0f1115]/90 backdrop-blur-xl shadow-[0_30px_100px_rgba(0,0,0,0.55)]"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
                     onClick={() => setSelected(null)}
                     className="
-                absolute right-4 top-4 z-10 rounded-full p-2
-                border border-white/15 bg-white/5
-                text-white/80
-                hover:text-white hover:border-white/30 hover:bg-white/10
-                transition-colors cursor-pointer
-              "
+  absolute right-3 top-3 z-10 rounded-full p-2
+  border border-white/15 bg-white/5
+  text-white/80
+  hover:text-white hover:border-white/30 hover:bg-white/10
+  transition-colors cursor-pointer
+  md:right-4 md:top-4
+"
                     aria-label="Close"
                   >
                     <FiX className="w-5 h-5" />

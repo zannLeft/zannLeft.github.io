@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 
 export const Astronaut = React.forwardRef(
   ({ onLoaded, ...props }, forwardedRef) => {
     const localGroup = useRef();
+    const { size } = useThree();
+    const isMobile = size.width < 768;
 
     const setRefs = useCallback(
       (node) => {
@@ -26,7 +29,7 @@ export const Astronaut = React.forwardRef(
       action?.reset?.();
       action?.play?.();
 
-      let raf = requestAnimationFrame(() => {
+      const raf = requestAnimationFrame(() => {
         onLoaded?.();
       });
 
@@ -38,8 +41,9 @@ export const Astronaut = React.forwardRef(
         ref={setRefs}
         {...props}
         dispose={null}
-        rotation={[0, -0.5, 0]}
-        position={[1.75, -1.5, 1.75]}
+        rotation={[0, isMobile ? -0.12 : -0.5, 0]}
+        position={isMobile ? [0, -1.55, 1.35] : [1.75, -1.5, 1.75]}
+        scale={isMobile ? 0.9 : 1}
       >
         <group name="Scene">
           <group name="Armature" scale={0.01}>

@@ -1,16 +1,29 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const Timeline = () => {
   const wrapRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Progress for this section only
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(media.matches);
+    update();
+
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: wrapRef,
     offset: ["start center", "end center"],
   });
 
-  const railFill = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const railFill = useTransform(
+    scrollYProgress,
+    isMobile ? [0, 0.52] : [0, 1],
+    [0, 1],
+  );
 
   const items = [
     {
