@@ -10,15 +10,23 @@ import {
 import { useState } from "react";
 
 const Footer = () => {
-  const EMAIL = "your@email.com"; // ✅ change this
-  const NAME = "Žan"; // ✅ change if needed
+  const EMAIL = "zan.rostan@gmail.com";
+  const NAME = "Žan";
 
   const socials = [
-    { label: "LinkedIn", href: "#", icon: <FiLinkedin className="w-5 h-5" /> },
-    { label: "GitHub", href: "#", icon: <FiGithub className="w-5 h-5" /> },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/%C5%BEan-ro%C5%A1tan-a787b92b2/",
+      icon: <FiLinkedin className="w-5 h-5" />,
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/zannLeft",
+      icon: <FiGithub className="w-5 h-5" />,
+    },
     {
       label: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/zan_rostan/",
       icon: <FiInstagram className="w-5 h-5" />,
     },
   ];
@@ -26,9 +34,9 @@ const Footer = () => {
   const [copied, setCopied] = useState(false);
 
   const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent(
-    `Hi ${NAME} — from your portfolio`,
+    `Hi ${NAME} from your portfolio`,
   )}&body=${encodeURIComponent(
-    `Hey ${NAME},\n\nI found your portfolio and I'd like to talk about...\n\n—`,
+    `Hey ${NAME},\n\nI found your portfolio and I'd like to talk about:\n\n`,
   )}`;
 
   const copyEmail = async () => {
@@ -57,7 +65,7 @@ const Footer = () => {
       id="contact"
       className="relative w-full min-h-screen overflow-hidden flex flex-col"
     >
-      {/* Subtle section background (now fully opaque) */}
+      {/* Subtle section background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <img
           src="/assets/footer-overlay.png"
@@ -124,7 +132,7 @@ const Footer = () => {
 
                   <div className="mt-8 flex flex-wrap gap-3">
                     <a
-                      href="/assets/cv.pdf"
+                      href="assets/cv.pdf"
                       className="px-5 py-3 rounded-full border border-white/15 bg-white/5 text-white/85 font-semibold hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md"
                     >
                       Download CV
@@ -138,7 +146,7 @@ const Footer = () => {
                     </a>
 
                     <a
-                      href="#"
+                      href="#top"
                       className="px-5 py-3 rounded-full border border-white/15 bg-white/5 text-white/85 font-semibold hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md"
                     >
                       Back to top
@@ -181,7 +189,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Full-width copyright strip — navbar height */}
+      {/* Full-width copyright strip */}
       <motion.div
         className="w-full border-t border-transparent"
         style={{

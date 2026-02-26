@@ -10,21 +10,33 @@ import { FiFacebook, FiLinkedin, FiInstagram, FiGithub } from "react-icons/fi";
 
 const Navbar = () => {
   const links = [
-    { label: "Home", href: "#" },
+    { label: "Home", href: "#top" },
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
     { label: "Timeline", href: "#timeline" },
   ];
 
   const socials = [
-    { label: "LinkedIn", href: "#", icon: <FiLinkedin className="w-6 h-6" /> },
-    { label: "Facebook", href: "#", icon: <FiFacebook className="w-6 h-6" /> },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/%C5%BEan-ro%C5%A1tan-a787b92b2/",
+      icon: <FiLinkedin className="w-6 h-6" />,
+    },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/profile.php?id=100010029815991&locale=sl_SI",
+      icon: <FiFacebook className="w-6 h-6" />,
+    },
     {
       label: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/zan_rostan/",
       icon: <FiInstagram className="w-6 h-6" />,
     },
-    { label: "GitHub", href: "#", icon: <FiGithub className="w-6 h-6" /> },
+    {
+      label: "GitHub",
+      href: "https://github.com/zannLeft",
+      icon: <FiGithub className="w-6 h-6" />,
+    },
   ];
 
   const { scrollY, scrollYProgress } = useScroll();
@@ -34,10 +46,10 @@ const Navbar = () => {
   const raw = useTransform(scrollY, [0, 120], [0, 1], { clamp: true });
   const t = useSpring(raw, { stiffness: 160, damping: 26, mass: 0.7 });
 
-  // ✅ Blur only appears when scrolling
+  // Blur only appears when scrolling
   const blur = useTransform(t, (v) => `blur(${14 * v}px)`);
 
-  // Dark glass ramps in (fits your dark hero)
+  // Dark glass ramps in
   const bg = useTransform(t, (v) => `rgba(15, 17, 21, ${0.72 * v})`);
   const border = useTransform(t, (v) => `rgba(255,255,255,${0.1 * v})`);
   const shadow = useTransform(t, (v) => `0 10px 30px rgba(0,0,0,${0.35 * v})`);
@@ -96,7 +108,11 @@ const Navbar = () => {
         >
           {/* Left */}
           <div className="flex items-center gap-10">
-            <a href="/" className="flex items-center group" aria-label="Home">
+            <a
+              href="#top"
+              className="flex items-center group"
+              aria-label="Home"
+            >
               <img
                 src="assets/logo.svg"
                 alt="Logo"
@@ -120,6 +136,8 @@ const Navbar = () => {
                 key={s.label}
                 className="text-white/65 hover:text-white transition-colors"
                 href={s.href}
+                target="_blank"
+                rel="noreferrer"
                 aria-label={s.label}
               >
                 {s.icon}
@@ -219,6 +237,8 @@ const Navbar = () => {
                     <a
                       key={s.label}
                       href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
                       aria-label={s.label}
                       className="text-white/65 hover:text-white transition-colors"
                     >

@@ -14,45 +14,78 @@ const Timeline = () => {
 
   const items = [
     {
-      date: "2026 — Present",
-      title: "Freelance / Personal Projects",
-      subtitle: "Building interactive web experiences",
+      date: "2024 – Oct 2025",
+      title: "Jožef Stefan Institute (Sector E9)",
+      subtitle: "AI and LLM integrations developer",
       points: [
-        "Shipped multiple portfolio + product-style builds with React + Tailwind.",
-        "Focused on smooth motion, performance, and clean UI systems.",
-        "Explored 3D scenes + animation pipelines with R3F.",
+        "Built and integrated LLM features across multiple internal and applied projects.",
+        "Worked on privacy-sensitive healthcare and monitoring use cases, including RAG-style retrieval workflows.",
+        "Co-authored the paper “Evaluating Large Language Models for Privacy-Sensitive Healthcare Applications” (Information Society 2025).",
+        "Contributed to IJS Asistent, a Slovenian AI assistant project listed in COBISS.",
       ],
     },
     {
-      date: "2025",
-      title: "School / Practice Projects",
-      subtitle: "Learning by building",
+      date: "2021 – Present",
+      title: "University of Ljubljana, FRI",
+      subtitle: "BSc Computer and Information Science",
       points: [
-        "Built web apps and small games to sharpen fundamentals.",
-        "Learned modern frontend patterns, component architecture, and tooling.",
-        "Worked with APIs, auth, storage, and deployment basics.",
+        "Built full-stack coursework projects with HTML, CSS, JavaScript, PHP, and Node.js.",
+        "Worked with databases and API integrations in practical assignments.",
+        "Explored blockchain basics through hands-on implementation in projects.",
+        "Kept building personal projects in parallel with studies.",
       ],
     },
     {
-      date: "2024",
-      title: "Started Programming Seriously",
-      subtitle: "Found the craft",
+      date: "2019",
+      title: "Celtra d.o.o.",
+      subtitle: "Student worker",
       points: [
-        "Got comfortable with JavaScript and the frontend workflow.",
-        "Built first real projects and iterated rapidly on UI/UX.",
-        "Developed a strong interest in animation + interactive design.",
+        "Did data annotation work using spreadsheets.",
+        "Worked with PostgreSQL tooling and basic database workflows.",
+      ],
+    },
+    {
+      date: "2017",
+      title: "JKP Grosuplje d.o.o.",
+      subtitle: "Web video game developer",
+      points: [
+        "Shipped a 2D web game in JavaScript and HTML5.",
+        "Implemented a save system and high score tracking.",
       ],
     },
   ];
 
   const skillGroups = [
-    { title: "Frontend", chips: ["React", "TypeScript", "Tailwind", "Vite"] },
     {
-      title: "Motion / 3D",
-      chips: ["Framer Motion", "Three.js", "R3F", "GLTF"],
+      title: "Frontend",
+      chips: ["React", "TypeScript", "Tailwind", "Framer Motion"],
     },
-    { title: "Backend", chips: ["Node.js", "APIs", "Postgres", "Docker"] },
-    { title: "AI", chips: ["Prompting", "Tools", "Python", "RAG basics"] },
+    { title: "Backend", chips: ["Node.js", "APIs", "PostgreSQL", "Docker"] },
+    { title: "Game / 3D", chips: ["Unity", "C#", "Three.js / R3F", "Blender"] },
+    {
+      title: "AI / LLM",
+      chips: ["RAG", "GraphRAG", "Prompting", "Semantic analysis"],
+    },
+  ];
+
+  const researchItems = [
+    {
+      type: "Paper",
+      title:
+        "Evaluating Large Language Models for Privacy-Sensitive Healthcare Applications",
+      meta: "Information Society 2025 · Co-author · Pages 16–20",
+      description:
+        "A conference paper on evaluating LLMs for privacy-sensitive healthcare use cases, covering privacy risks, GDPR-aware deployment, benchmarking, and practical trade-offs between frontier and open-weight models.",
+      chips: ["COBISS-ID: 262140419", "Healthcare", "Privacy", "LLMs"],
+    },
+    {
+      type: "Software",
+      title: "IJS Asistent",
+      meta: 'Institut "Jožef Stefan" · 2025 · Slovenian AI assistant',
+      description:
+        "A COBISS-listed software record connected to my applied LLM work at Jožef Stefan Institute, focused on real-world assistant development and deployment.",
+      chips: ["COBISS-ID: 264777731", "Applied AI", "LLM integrations"],
+    },
   ];
 
   // Beige accent used ONLY for the playing cards
@@ -62,20 +95,20 @@ const Timeline = () => {
     {
       rank: "A",
       suit: "♠",
-      title: "Performance-minded",
-      text: "I optimize rendering + interaction so things feel smooth and intentional.",
+      title: "Polished interaction",
+      text: "I care about the small details: motion, spacing, and UI that feels responsive.",
     },
     {
       rank: "K",
       suit: "♦",
-      title: "Polished UI",
-      text: "Spacing, typography, micro-interactions — the details that make it feel premium.",
+      title: "3D and real-time",
+      text: "Comfortable with Unity and realtime scenes, plus the practical side of shipping them.",
     },
     {
       rank: "Q",
       suit: "♥",
-      title: "Fast iteration",
-      text: "I prototype quickly, then refine into clean, reusable components.",
+      title: "LLM features",
+      text: "I build LLM workflows that are useful in products, with retrieval and validation in mind.",
     },
   ];
 
@@ -97,7 +130,7 @@ const Timeline = () => {
   );
 
   const PlayingCard = ({ rank, suit, title, text }) => {
-    const cornerColor = "text-[#f3e7d3]/90"; // beige corner rank/suit
+    const cornerColor = "text-[#f3e7d3]/90";
 
     return (
       <motion.div
@@ -105,32 +138,26 @@ const Timeline = () => {
         transition={{ type: "spring", stiffness: 220, damping: 20 }}
         className="relative overflow-hidden rounded-[26px] border border-white/12 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md shadow-[0_25px_90px_rgba(0,0,0,0.45)]"
       >
-        {/* soft sheen */}
         <div className="pointer-events-none absolute inset-0 opacity-70">
           <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
           <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
         </div>
 
-        {/* beige accent edge */}
         <div
           className={`pointer-events-none absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b ${BEIGE_ACCENT}`}
         />
 
-        {/* corner rank/suit */}
         <div className="absolute left-4 top-4 leading-none">
           <div className={`font-extrabold text-lg ${cornerColor}`}>{rank}</div>
           <div className={`text-lg ${cornerColor}`}>{suit}</div>
         </div>
 
-        {/* mirrored corner */}
         <div className="absolute right-4 bottom-4 leading-none rotate-180">
           <div className={`font-extrabold text-lg ${cornerColor}`}>{rank}</div>
           <div className={`text-lg ${cornerColor}`}>{suit}</div>
         </div>
 
-        {/* center content */}
         <div className="relative p-6 pt-14">
-          {/* strength pill */}
           <div className="absolute left-20 top-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-3 py-1 text-xs font-semibold text-white/70">
               <span
@@ -143,7 +170,6 @@ const Timeline = () => {
           <h4 className="mt-4 text-xl font-extrabold text-white">{title}</h4>
           <p className="mt-2 text-white/70 leading-relaxed">{text}</p>
 
-          {/* beige underline */}
           <div
             className={`mt-5 h-[2px] w-20 rounded-full bg-gradient-to-r ${BEIGE_ACCENT} opacity-85`}
           />
@@ -158,7 +184,6 @@ const Timeline = () => {
       ref={wrapRef}
       className="relative w-full py-28 c-space overflow-hidden"
     >
-      {/* Subtle section background (same as Projects) */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 opacity-40">
           <img
@@ -172,7 +197,6 @@ const Timeline = () => {
       </div>
 
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -192,24 +216,19 @@ const Timeline = () => {
             .
           </h2>
           <p className="mt-6 text-lg md:text-xl text-white/70">
-            The story + the toolkit — presented with motion and hierarchy.
+            A quick look at what I have done so far, plus the tools I use most.
           </p>
         </motion.div>
 
-        {/* Split layout */}
         <div className="mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* LEFT: Timeline */}
           <div className="relative">
-            {/* Rail */}
             <div className="absolute left-[14px] top-0 bottom-0 w-[2px] bg-white/10" />
 
-            {/* Rail fill (scroll progress) */}
             <motion.div
               className="absolute left-[14px] top-0 bottom-0 w-[2px] origin-top bg-gradient-to-b from-cyan-400 to-fuchsia-500"
               style={{ scaleY: railFill }}
             />
 
-            {/* “Now” milestone */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -227,17 +246,16 @@ const Timeline = () => {
                   NOW
                 </p>
                 <h3 className="mt-2 text-2xl md:text-3xl font-extrabold text-white">
-                  Shipping polished work
+                  University and personal projects
                 </h3>
                 <p className="mt-2 text-white/70">
-                  Focused on interactive UI, 3D scenes, and AI features — with
-                  performance and detail as the baseline.
+                  Currently focused on studies, building projects, and
+                  sharpening my skills across web, 3D, and LLM features.
                 </p>
                 <div className="mt-5 h-[2px] w-full rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-500 opacity-70" />
               </div>
             </motion.div>
 
-            {/* Items */}
             <div className="space-y-8">
               {items.map((it, idx) => (
                 <motion.article
@@ -249,7 +267,6 @@ const Timeline = () => {
                   transition={{ duration: 0.5 }}
                   className="relative pl-12"
                 >
-                  {/* Dot */}
                   <div className="absolute left-0 top-7 h-7 w-7 rounded-full border border-white/15 bg-[#0f1115] flex items-center justify-center">
                     <div className="h-3 w-3 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-500" />
                   </div>
@@ -278,9 +295,7 @@ const Timeline = () => {
             </div>
           </div>
 
-          {/* RIGHT: Strength cards + Toolkit */}
           <div className="lg:sticky lg:top-28 space-y-6">
-            {/* Strength cards */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -294,10 +309,9 @@ const Timeline = () => {
                     STRENGTHS
                   </p>
                   <h3 className="mt-2 text-2xl md:text-3xl font-extrabold text-white">
-                    What you can expect
+                    What I bring to a project
                   </h3>
                 </div>
-                <div className="text-white/60 text-sm">(real strengths)</div>
               </div>
 
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -307,11 +321,10 @@ const Timeline = () => {
               </div>
             </motion.div>
 
-            {/* Toolkit */}
             <Glass className="p-7">
               <h3 className="text-2xl font-extrabold text-white">Toolkit</h3>
               <p className="mt-2 text-white/70">
-                Tools I use most often — grouped and compact.
+                Tools I use most often, grouped for a quick scan.
               </p>
 
               <div className="mt-6 space-y-5">
@@ -327,6 +340,53 @@ const Timeline = () => {
                           className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-semibold text-white/75 hover:bg-white/10 transition-colors"
                         >
                           {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Glass>
+
+            <Glass className="p-7">
+              <p className="text-sm font-semibold tracking-widest text-white/60">
+                RESEARCH
+              </p>
+              <h3 className="mt-2 text-2xl font-extrabold text-white">
+                Publications & contributions
+              </h3>
+              <p className="mt-2 text-white/70">
+                A small snapshot of research and institutional work connected to
+                my LLM experience.
+              </p>
+
+              <div className="mt-6 space-y-4">
+                {researchItems.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold tracking-widest text-white/70">
+                      {item.type}
+                    </div>
+
+                    <h4 className="mt-3 text-lg md:text-xl font-extrabold text-white leading-snug">
+                      {item.title}
+                    </h4>
+
+                    <p className="mt-2 text-sm text-white/55">{item.meta}</p>
+
+                    <p className="mt-3 text-white/70 leading-relaxed">
+                      {item.description}
+                    </p>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {item.chips.map((chip) => (
+                        <span
+                          key={chip}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-white/75"
+                        >
+                          {chip}
                         </span>
                       ))}
                     </div>

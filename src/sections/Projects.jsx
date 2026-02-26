@@ -7,13 +7,14 @@ const Projects = () => {
   const featured = useMemo(
     () => ({
       title: "Letter Sauce",
-      subtitle: "Short one-liner that sells it.",
+      subtitle:
+        "Multiplayer Unity prototype inspired by Letter Jam, built for a full game flow and reliable networking.",
       description:
-        "A slightly longer description of what makes this project special. Mention impact, tech, or what you solved.",
-      tags: ["React", "R3F", "Framer Motion", "Tailwind"],
-      image: "/assets/projects/featured.jpg", // <-- add this image
-      live: "#",
-      repo: "#",
+        "Letter Sauce is a multiplayer digital prototype built in Unity 6.3 where players sit around a table and solve hidden words together. Each player enters a 5-letter word, but cannot see their own letters. A clue giver builds hints from the letters they can see on other players’ stands and places tokens in the 3D world to communicate structure. The project includes a complete UI flow (menu, lobby, word entry, gameplay), server authoritative synchronization using Netcode for GameObjects, and room joining via Unity Relay. Visually it’s set in a foggy night forest built in URP, with depth and atmosphere boosted using SSAO, layered fog, and small procedural effects like candle flicker, fireflies, and vegetation sway.",
+      tags: ["Unity 6.3", "C#", "URP", "Relay", "Netcode (NGO)", "Blender"],
+      image: "/assets/projects/featured.jpg",
+      live: "https://github.com/zannLeft",
+      repo: "https://github.com/zannLeft",
     }),
     [],
   );
@@ -22,72 +23,117 @@ const Projects = () => {
     () => [
       {
         title: "zannLeft.io",
-        subtitle: "Short description",
-        tags: ["React", "Node"],
+        subtitle:
+          "My personal portfolio site with motion, 3D, and a focus on clean presentation.",
+        description:
+          "A portfolio build where I experiment with layout, animation, and interactive visuals. It’s where I package projects into a polished presentation and try out new UI ideas without overcomplicating the content.",
+        tags: ["React", "Tailwind", "Framer Motion"],
         image: "/assets/projects/p1.jpg",
         live: "#",
         repo: "#",
       },
       {
-        title: "Letter Sauce WebGPU",
-        subtitle: "Short description",
-        tags: ["Three.js", "R3F"],
+        title: "Letter Sauce (WebGPU)",
+        subtitle:
+          "Custom WebGPU prototype with a stylized 3D scene and multiplayer foundations.",
+        description:
+          "A WebGPU project set in a night forest where players are owls sitting around a table. Rendering is done with a custom WGSL lighting shader combining Lambert diffuse and Phong specular, with support for multiple directional and point lights. Assets are loaded from GLTF/GLB using a custom parser that supports WEBP textures and animations, and missing normals are computed when needed. Gameplay systems are built on an ECS architecture, with token placement handled through a geometric approach (non-overlapping random scatter and neat arcs in front of players) instead of heavy physics. Networking is host authoritative with replicated entities and snapshot sync for clients.",
+        tags: ["WebGPU", "WGSL", "GLTF", "ECS", "Multiplayer"],
         image: "/assets/projects/p2.jpg",
         live: "#",
         repo: "#",
       },
       {
         title: "Multiplayer Unity Hacking Game",
-        subtitle: "Short description",
-        tags: ["AI", "Python"],
+        subtitle:
+          "First-person competitive game prototype with custom systems and a lobby flow.",
+        description:
+          "A passion project built in Unity where players compete in an immersive first-person environment. It includes a lobby system built with Unity Netcode for GameObjects and a control setup designed to stay responsive and customizable. I’m continuing to iterate on environments, animations, and the overall gameplay loop.",
+        tags: ["Unity", "C#", "Netcode", "Blender"],
         image: "/assets/projects/p3.jpg",
         live: "#",
         repo: "#",
       },
       {
         title: "Koncerti.live",
-        subtitle: "Short description",
-        tags: ["Animations", "Framer Motion"],
+        subtitle:
+          "Concert discovery and ticketing with Spotify recommendations, LLM features, and blockchain payments.",
+        description:
+          "A modern rebuild of koncerti.net with a clean UI and a lot of real functionality. Users can browse concerts and artists, connect Spotify for personalized suggestions, buy tickets with Stripe or with an Ethereum checkout flow, and chat with other attendees. The admin side covers full CRUD, moderation, analytics, and tools for generating concert text with an LLM, including a RAG-style approach for generating concert programs from stored blueprints.",
+        tags: [
+          "Angular",
+          "Node.js",
+          "MongoDB",
+          "Docker",
+          "Stripe",
+          "Spotify API",
+          "LLM",
+          "Hardhat",
+        ],
         image: "/assets/projects/p4.jpg",
         live: "#",
         repo: "#",
       },
       {
         title: "Tippy",
-        subtitle: "Short description",
-        tags: ["Animations", "Framer Motion"],
+        subtitle:
+          "A simple social app built fast with FlutterFlow and Supabase.",
+        description:
+          "A weekend challenge that turned into a full mini app. It includes Supabase authentication, post creation, comments, and realtime updates. The goal was to learn fast product-style iteration while keeping the UI minimal and clear.",
+        tags: ["FlutterFlow", "Supabase", "Auth", "Realtime"],
+
         image: "/assets/projects/p5.jpg",
         live: "#",
         repo: "#",
       },
       {
-        title: "Project Six",
-        subtitle: "Short description",
-        tags: ["Animations", "Framer Motion"],
+        title: "Flutter Demo",
+        subtitle:
+          "My first Flutter app, built to learn the basics of Flutter and Dart.",
+        description:
+          "A small starter project where I focused on learning layout, state, navigation, and the overall Flutter workflow. It’s not huge, but it was an important step into mobile development.",
+        tags: ["Flutter", "Dart"],
         image: "/assets/projects/p6.jpg",
+
         live: "#",
         repo: "#",
       },
       {
-        title: "Project Seven",
-        subtitle: "Short description",
-        tags: ["Animations", "Framer Motion"],
+        title: "Recycle Rush",
+        subtitle: "A published browser game made for a local utility company.",
+        description:
+          "A 2D educational game built for the web and published through a local public utility company. It was one of my first projects that shipped to real users and taught me a lot about finishing, polishing, and delivering something complete.",
+        tags: ["JavaScript", "HTML5", "Game Dev"],
         image: "/assets/projects/p7.jpg",
+
         live: "#",
         repo: "#",
       },
       {
-        title: "Project Eight",
-        subtitle: "Short description",
-        tags: ["Animations", "Framer Motion"],
+        title: "Apotos in Minecraft",
+        subtitle: "Custom textures and models for a themed Minecraft map.",
+        description:
+          "A creative project focused on world-building, custom textures, and models. It’s where I practiced visual consistency and asset work, which later helped with 3D pipelines in other projects.",
+        tags: ["3D Assets", "Textures", "Design"],
         image: "/assets/projects/p8.jpg",
+
         live: "#",
         repo: "#",
       },
       {
-        title: "Project Nine",
-        subtitle: "Short description",
-        tags: ["Animations", "Framer Motion"],
+        title: "Mars Citizen",
+        subtitle:
+          "University web app about NASA Mars rovers with live photos, charts, and Web3 likes.",
+        description:
+          "A university project themed around NASA’s Mars rovers. Users can pick a rover to view its basic info, then choose a date to fetch real images from the NASA Mars Rover Photos API. The app shows how many photos exist for that day, which camera was used, and displays the selected image. It also includes a CanvasJS chart to compare rover stats and a small Web3 feature where users can connect an Ethereum wallet and send a “like” transaction, with a table that lists the like history.",
+        tags: [
+          "HTML",
+          "Bootstrap",
+          "JavaScript",
+          "NASA API",
+          "CanvasJS",
+          "Web3.js",
+        ],
         image: "/assets/projects/p9.jpg",
         live: "#",
         repo: "#",
@@ -212,10 +258,12 @@ const Projects = () => {
             <button
               key={`${p.title}-${p.image}`}
               onClick={() => setSelected(p)}
-              className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden text-left shadow-[0_20px_60px_rgba(0,0,0,0.35)] hover:border-white/20 transition-colors cursor-pointer"
+              // 1. ADDED: `flex flex-col h-full w-full` to structure the card perfectly in the grid
+              className="group flex flex-col h-full w-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden text-left shadow-[0_20px_60px_rgba(0,0,0,0.35)] hover:border-white/20 transition-colors cursor-pointer"
               aria-label={`Open ${p.title}`}
             >
-              <div className="relative h-52 overflow-hidden">
+              {/* 2. ADDED: `w-full shrink-0` so the image wrapper spans the top and doesn't get squished */}
+              <div className="relative w-full h-52 shrink-0 overflow-hidden">
                 <img
                   src={p.image}
                   alt={p.title}
@@ -225,11 +273,13 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
               </div>
 
-              <div className="p-6">
+              {/* 3. ADDED: `flex flex-col flex-1` so this container grows to fill remaining space, anchoring the image to the top */}
+              <div className="flex flex-col flex-1 p-6">
                 <h4 className="text-xl font-extrabold text-white">{p.title}</h4>
                 <p className="mt-2 text-white/70">{p.subtitle}</p>
 
-                <div className="mt-4 flex flex-wrap gap-2">
+                {/* ADDED: `mt-auto pt-4` to the tags wrapper pushes the tags to the very bottom if you want them aligned */}
+                <div className="mt-auto pt-4 flex flex-wrap gap-2">
                   {p.tags.map((t) => (
                     <span
                       key={t}
@@ -251,7 +301,7 @@ const Projects = () => {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm cursor-pointer"
+              className="fixed inset-0 z-[999] bg-black/60 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -259,9 +309,9 @@ const Projects = () => {
               aria-label="Close modal"
             />
 
-            {/* Click-outside handler lives here */}
+            {/* Modal shell */}
             <motion.div
-              className="fixed inset-0 z-[1000] flex items-center justify-center p-5 md:p-8 cursor-pointer"
+              className="fixed inset-0 z-[1000] flex items-start justify-center p-4 md:p-8 overflow-y-auto"
               initial={{ opacity: 0, y: 18, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 18, scale: 0.98 }}
@@ -269,73 +319,79 @@ const Projects = () => {
               onClick={() => setSelected(null)}
               aria-label="Close modal"
             >
-              {/* Card stops the outside click */}
-              <div
-                className="relative w-full max-w-5xl max-h-[85vh] overflow-auto rounded-3xl border border-white/10 bg-[#0f1115]/90 backdrop-blur-xl shadow-[0_30px_100px_rgba(0,0,0,0.55)] cursor-auto"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  onClick={() => setSelected(null)}
-                  className="
-                    absolute right-4 top-4 z-10 rounded-full p-2
-                    border border-white/15 bg-white/5
-                    text-white/80
-                    hover:text-white hover:border-white/30 hover:bg-white/10
-                    transition-colors
-                    cursor-pointer
-                  "
-                  aria-label="Close"
+              {/* Top spacing */}
+              <div className="w-full max-w-5xl pt-8 md:pt-14">
+                <div
+                  className="relative w-full max-h-[calc(100vh-4rem)] md:max-h-[calc(100vh-7rem)] overflow-y-auto rounded-3xl border border-white/10 bg-[#0f1115]/90 backdrop-blur-xl shadow-[0_30px_100px_rgba(0,0,0,0.55)]"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <FiX className="w-5 h-5" />
-                </button>
+                  <button
+                    onClick={() => setSelected(null)}
+                    className="
+                absolute right-4 top-4 z-10 rounded-full p-2
+                border border-white/15 bg-white/5
+                text-white/80
+                hover:text-white hover:border-white/30 hover:bg-white/10
+                transition-colors cursor-pointer
+              "
+                    aria-label="Close"
+                  >
+                    <FiX className="w-5 h-5" />
+                  </button>
 
-                <div className="relative h-[320px] md:h-[420px]">
-                  <img
-                    src={selected.image}
-                    alt={selected.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    draggable={false}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-black/20 to-transparent" />
-                </div>
-
-                <div className="p-7 md:p-10">
-                  <h3 className="text-3xl md:text-4xl font-extrabold text-white">
-                    {selected.title}
-                  </h3>
-                  <p className="mt-3 text-white/75 text-lg">
-                    {selected.description || selected.subtitle}
-                  </p>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {(selected.tags || []).map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-semibold text-white/75"
-                      >
-                        {t}
-                      </span>
-                    ))}
+                  <div className="relative h-[260px] md:h-[420px]">
+                    <img
+                      src={selected.image}
+                      alt={selected.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      draggable={false}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-black/20 to-transparent" />
                   </div>
 
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    {selected.live && (
-                      <a
-                        href={selected.live}
-                        className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform cursor-pointer"
-                      >
-                        Live <FiExternalLink />
-                      </a>
-                    )}
+                  <div className="p-7 md:p-10">
+                    <h3 className="text-3xl md:text-4xl font-extrabold text-white">
+                      {selected.title}
+                    </h3>
 
-                    {selected.repo && (
-                      <a
-                        href={selected.repo}
-                        className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md cursor-pointer"
-                      >
-                        Code <FiGithub />
-                      </a>
-                    )}
+                    <p className="mt-3 text-white/75 text-lg">
+                      {selected.description || selected.subtitle}
+                    </p>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {(selected.tags || []).map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-semibold text-white/75"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-4">
+                      {selected.live && (
+                        <a
+                          href={selected.live}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform cursor-pointer"
+                        >
+                          Live <FiExternalLink />
+                        </a>
+                      )}
+
+                      {selected.repo && (
+                        <a
+                          href={selected.repo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md cursor-pointer"
+                        >
+                          Code <FiGithub />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
