@@ -13,8 +13,17 @@ const Projects = () => {
         "Letter Sauce is a multiplayer digital prototype built in Unity 6.3 where players sit around a table and solve hidden words together. Each player enters a 5-letter word, but cannot see their own letters. A clue giver builds hints from the letters they can see on other players’ stands and places tokens in the 3D world to communicate structure. The project includes a complete UI flow (menu, lobby, word entry, gameplay), server authoritative synchronization using Netcode for GameObjects, and room joining via Unity Relay. Visually it’s set in a foggy night forest built in URP, with depth and atmosphere boosted using SSAO, layered fog, and small procedural effects like candle flicker, fireflies, and vegetation sway.",
       tags: ["Unity 6.3", "C#", "URP", "Relay", "Netcode (NGO)", "Blender"],
       image: "/assets/projects/featured.jpg",
-      live: "https://github.com/zannLeft",
-      repo: "https://github.com/zannLeft",
+      links: [
+        {
+          label: "Watch video",
+          href: "https://www.youtube.com/watch?v=SAjjsrrAaUk",
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/zannLeft",
+          icon: "github",
+        },
+      ],
     }),
     [],
   );
@@ -44,6 +53,32 @@ const Projects = () => {
         repo: "#",
       },
       {
+        title: "The Dark Ship",
+        subtitle:
+          "A popular Minecraft horror escape map set aboard an abandoned ocean liner.",
+        description:
+          "The Dark Ship is a Minecraft horror escape map where players explore a dark, abandoned ocean liner, solve puzzles, uncover what happened to the passengers, and try to escape the thing hiding below the sea. The map focuses on atmosphere and pacing, using a required resource pack with custom sounds, textures, models, and music. It supports singleplayer and multiplayer, has about one hour of playtime, and became one of my most visible Minecraft projects after launch.",
+        tags: [
+          "Minecraft",
+          "Horror",
+          "Puzzle",
+          "Escape Map",
+          "Resource Pack",
+          "Level Design",
+        ],
+        image: "/assets/projects/p10.jpg",
+        links: [
+          {
+            label: "Watch walkthrough",
+            href: "https://www.youtube.com/watch?v=yDCSMWvD1GQ",
+          },
+          {
+            label: "Download map",
+            href: "https://www.minecraftmaps.com/52345-the-dark-ship",
+          },
+        ],
+      },
+      {
         title: "Multiplayer Unity Hacking Game",
         subtitle:
           "First-person competitive game prototype with custom systems and a lobby flow.",
@@ -53,6 +88,21 @@ const Projects = () => {
         image: "/assets/projects/p3.jpg",
         live: "#",
         repo: "#",
+      },
+      {
+        title: "Virtual Museum",
+        subtitle:
+          "A Unity gallery prototype focused on atmosphere, lighting, and day-night exhibition modes.",
+        description:
+          "Virtual Museum is an interactive Unity prototype of a calm digital gallery where paintings, space, light, and materials work together. The museum includes a reception area, exhibition rooms, plaques, benches, a lounge area, and first-person exploration. Its main idea is an interactive transition between a bright daytime gallery and a darker night exhibition where selected paintings gain emissive details such as stars, windows, city lights, and reflections. The project also includes custom material work with normal, smoothness, and emission maps, simple interactions through raycasts and an IInteractable interface, seating interaction, and a cinematic camera mode for recording smooth showcase footage.",
+        tags: ["Unity", "C#", "URP", "Lighting", "Materials", "First-Person"],
+        image: "/assets/projects/p11.jpg",
+        links: [
+          {
+            label: "Watch video",
+            href: "https://www.youtube.com/watch?v=6TdkxWJGy1o",
+          },
+        ],
       },
       {
         title: "Koncerti.live",
@@ -71,6 +121,46 @@ const Projects = () => {
           "Hardhat",
         ],
         image: "/assets/projects/p4.jpg",
+        live: "#",
+        repo: "#",
+      },
+      {
+        title: "AirWise",
+        subtitle:
+          "Personalized air-quality recommendations for safer outdoor activity planning.",
+        description:
+          "AirWise is a web application that turns raw air-quality measurements into clear, personalized recommendations for outdoor activities. Instead of only showing values like PM2.5, PM10, NO2, and O3, the app combines environmental data with a user health profile such as asthma, allergies, age group, or sensitivity to pollution. It calculates a risk score, explains whether conditions are safe or require caution, and recommends better time windows for going outside. The system uses an Angular frontend, a Node.js/Express REST API, MongoDB, external data from ARSO and Open-Meteo, plus separate modules for risk scoring and recommendations.",
+        tags: [
+          "Angular",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "ARSO API",
+          "Open-Meteo",
+          "Risk Engine",
+        ],
+        image: "/assets/projects/p12.jpg",
+        live: "#",
+        repo: "#",
+      },
+      {
+        title: "Routine Tracker",
+        subtitle:
+          "A Kotlin Android time-management app for planning routines and tracking whether they actually happened.",
+        description:
+          "Routine Tracker is a native Android app for defining scheduled routines such as study, exercise, and socialising. Users can create routines with a time range, active days, notification settings, and detailed routine screens. The app evolved across multiple milestones: it started with a drawer-based fragment UI, SQLite scheduling, and AlarmManager reminders; then moved to a cleaner MVVM architecture with Room, Repository, ViewModels, LiveData/Flows, WorkManager-based execution checks, and routine history; and finally added a Jetpack Compose routine list, OpenWeather API integration through Retrofit, ambient light sensing, and smart contextual suggestions for how to perform an upcoming routine.",
+        tags: [
+          "Kotlin",
+          "Android",
+          "MVVM",
+          "Room",
+          "Jetpack Compose",
+          "WorkManager",
+          "AlarmManager",
+          "Retrofit",
+          "Sensors",
+        ],
+        image: "/assets/projects/p13.jpg",
         live: "#",
         repo: "#",
       },
@@ -111,14 +201,17 @@ const Projects = () => {
       },
       {
         title: "Apotos in Minecraft",
-        subtitle: "Custom textures and models for a themed Minecraft map.",
+        subtitle: "Custom textures and models for a Sonic-inspired Minecraft map.",
         description:
-          "A creative project focused on world-building, custom textures, and models. It’s where I practiced visual consistency and asset work, which later helped with 3D pipelines in other projects.",
-        tags: ["3D Assets", "Textures", "Design"],
+          "A creative Minecraft project focused on recreating the feeling of Apotos through custom textures, models, and world-building. It helped me practice visual consistency, environmental design, and asset work, which later became useful for larger 3D and game projects.",
+        tags: ["Minecraft", "3D Assets", "Textures", "Worldbuilding"],
         image: "/assets/projects/p8.jpg",
-
-        live: "#",
-        repo: "#",
+        links: [
+          {
+            label: "Watch video",
+            href: "https://www.youtube.com/watch?v=shoK53_XZqk",
+          },
+        ],
       },
       {
         title: "Mars Citizen",
@@ -149,6 +242,22 @@ const Projects = () => {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  const getProjectLinks = (project) => {
+    if (project.links?.length) return project.links;
+
+    return [
+      project.live && project.live !== "#"
+        ? { label: "Live", href: project.live }
+        : null,
+      project.repo && project.repo !== "#"
+        ? { label: "Code", href: project.repo, icon: "github" }
+        : null,
+    ].filter(Boolean);
+  };
+
+  const renderLinkIcon = (link) =>
+    link.icon === "github" ? <FiGithub /> : <FiExternalLink />;
 
   return (
     <section id="projects" className="relative w-full py-28 overflow-hidden">
@@ -229,21 +338,22 @@ const Projects = () => {
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href={featured.live}
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform cursor-pointer"
-                  >
-                    Live
-                  </a>
-
-                  <a
-                    href={featured.repo}
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md cursor-pointer"
-                  >
-                    Code
-                  </a>
+                  {getProjectLinks(featured).map((link, index) => (
+                    <a
+                      key={`${featured.title}-${link.label}`}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className={
+                        index === 0
+                          ? "inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform cursor-pointer"
+                          : "inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md cursor-pointer"
+                      }
+                    >
+                      {link.label} {renderLinkIcon(link)}
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -371,27 +481,21 @@ const Projects = () => {
                     </div>
 
                     <div className="mt-8 flex flex-wrap gap-4">
-                      {selected.live && (
+                      {getProjectLinks(selected).map((link, index) => (
                         <a
-                          href={selected.live}
+                          key={`${selected.title}-${link.label}`}
+                          href={link.href}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform cursor-pointer"
+                          className={
+                            index === 0
+                              ? "inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-black bg-white hover:scale-[1.03] active:scale-[0.99] transition-transform cursor-pointer"
+                              : "inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md cursor-pointer"
+                          }
                         >
-                          Live <FiExternalLink />
+                          {link.label} {renderLinkIcon(link)}
                         </a>
-                      )}
-
-                      {selected.repo && (
-                        <a
-                          href={selected.repo}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-bold text-white border border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/25 transition-colors backdrop-blur-md cursor-pointer"
-                        >
-                          Code <FiGithub />
-                        </a>
-                      )}
+                      ))}
                     </div>
                   </div>
                 </div>
